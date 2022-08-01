@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Rating = (props) => {
 	const ratings = [];
@@ -18,11 +19,11 @@ const Rating = (props) => {
 	return (
 		<>
 			<div className='my-3'>
-				{props.rating} from {props.text}
+				{ratings.map((cn) => (
+					<i key={uuidv4()} style={{ color: props.color }} className={cn}></i>
+				))}{' '}
+				{props.text}
 			</div>
-			{ratings.map((cn) => (
-				<i style={{ color: props.color }} className={cn}></i>
-			))}
 		</>
 	);
 };
