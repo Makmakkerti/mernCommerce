@@ -1,0 +1,43 @@
+{
+	"name": "merncommerce",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "MERN Ecommerce",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server",
+		"server": "nodemon backend/server",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Makmakkerti/mernCommerce.git"
+	},
+	"keywords": [
+		"MERN",
+		"Ecommerce",
+		"Store"
+	],
+	"author": "Makmakkerti",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Makmakkerti/mernCommerce/issues"
+	},
+	"homepage": "https://github.com/Makmakkerti/mernCommerce#readme",
+	"dependencies": {
+		"concurrently": "^7.3.0",
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
+		"mongoose": "^6.5.0"
+	},
+	"devDependencies": {
+		"eslint": "^8.21.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jsx-a11y": "^6.6.1",
+		"eslint-plugin-react": "^7.30.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"nodemon": "^2.0.19"
+	}
+}
