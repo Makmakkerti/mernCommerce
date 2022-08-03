@@ -1,4 +1,4 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose from 'mongoose';
 
 const ReviewSchema = mongoose.Schema(
 	{
@@ -23,7 +23,7 @@ const ReviewSchema = mongoose.Schema(
 const ProductSchema = mongoose.Schema(
 	{
 		user: {
-			type: Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			required: true,
 			ref: 'User',
 		},

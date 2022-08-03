@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 // eslint-disable-next-line import/extensions
-import products from './data/products.js';
 import connect from './config/db.js';
+import productRouter from './routes/productRoutes.js';
 
 dotenv.config();
 connect();
@@ -12,9 +12,7 @@ app.get('/', (req, res) => {
 	res.status(200).send({ ok: true });
 });
 
-app.get('/api/products', (req, res) => {
-	res.json(products);
-});
+app.use('/api/products', productRouter);
 
 app.get('/api/products/:id', (req, res) => {
 	// eslint-disable-next-line no-underscore-dangle
