@@ -26,6 +26,7 @@
 	},
 	"homepage": "https://github.com/Makmakkerti/mernCommerce#readme",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"concurrently": "^7.3.0",
 		"dotenv": "^16.0.1",
 		"express": "^4.18.1",
