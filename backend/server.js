@@ -1,6 +1,5 @@
 import express from 'express';
 import dotenv from 'dotenv';
-// eslint-disable-next-line import/extensions
 import connect from './config/db.js';
 import productRouter from './routes/productRoutes.js';
 
