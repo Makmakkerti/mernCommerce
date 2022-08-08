@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../actions/productActions.js';
 import Message from '../components/Message.js';
 import Loader from '../components/Loader.js';
+import { addToCart } from '../actions/cartActions';
+import { notify } from 'react-notify-toast';
 
 const ProductScreen = () => {
 	let { id } = useParams();
@@ -24,12 +26,17 @@ const ProductScreen = () => {
 	}, [dispatch, id]);
 
 	const addToCartHandler = () => {
-		navigate(`/cart/${id}?qty=${qty}`);
+		dispatch(addToCart(id, qty));
+		notify.show(`${product.name} was added to cart successfully!`, 'success', 3000, 'green');
+	};
+
+	const goToCartHandler = () => {
+		navigate(`/cart/`);
 	};
 
 	const productData = (
 		<>
-			<Link className='btn btn-dark my-3' to='/'>
+			<Link className='btn btn-outline-dark my-3' to='/'>
 				To homepage
 			</Link>
 			<Row>
@@ -93,11 +100,19 @@ const ProductScreen = () => {
 							<ListGroup.Item>
 								<Button
 									onClick={addToCartHandler}
-									className='btn btn-block'
-									type='button'
+									variant='outline-success'
 									disabled={product.countInStock < 1}
 								>
 									Add to cart
+								</Button>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Button
+									onClick={goToCartHandler}
+									variant='outline-primary'
+									type='button'
+								>
+									Go to cart
 								</Button>
 							</ListGroup.Item>
 						</ListGroup>

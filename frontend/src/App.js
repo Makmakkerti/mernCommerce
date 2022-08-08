@@ -7,10 +7,12 @@ import HomeScreen from './screens/HomeScreen';
 import './App.css';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import Notifications from 'react-notify-toast';
 
 function App() {
 	return (
 		<Router>
+			<Notifications />
 			<Header />
 			<main className='py-3'>
 				<Container>
