@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import UserModel from '../models/UserModel.js';
 import { generateToken } from '../utils/generateToken.js';
+import bcrypt from 'bcryptjs';
 
 // @desc Auth user and get JWT token
 // @route POST /api/users/login
@@ -12,6 +13,35 @@ export const authUser = asyncHandler(async (req, res) => {
 
 	if (!user || !(await user.matchPassword(password)))
 		return res.send('Incorrect user or password!');
+
+	res.json({
+		_id: user._id,
+		name: user.name,
+		email: user.email,
+		isAdmin: user.isAdmin,
+		token: generateToken(user._id),
+	});
+});
+
+// @desc Create new user
+// @route POST /api/users/
+// @access Admin
+export const createUser = asyncHandler(async (req, res) => {
+	const { email, password, name } = req.body;
+
+	const userExists = await UserModel.findOne({ email });
+
+	if (userExists) {
+		res.status(400);
+		throw new Error('User already exist');
+	}
+
+	const user = await UserModel.create({
+		name,
+		email,
+		isAdmin: false,
+		password,
+	});
 
 	res.json({
 		_id: user._id,
