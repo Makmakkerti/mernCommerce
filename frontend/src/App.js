@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import './App.css';
 import ProductScreen from './screens/ProductScreen';
+import LoginScreen from './screens/LoginScreen';
 import CartScreen from './screens/CartScreen';
 import Notifications from 'react-notify-toast';
 
@@ -18,6 +19,7 @@ function App() {
 				<Container>
 					<Routes>
 						<Route exact path='/' element={<HomeScreen />} />
+						<Route path='/login' element={<LoginScreen />} />
 						<Route path='/product/:id' element={<ProductScreen />} />
 						<Route path='/cart/:id' element={<CartScreen />} />
 						<Route path='/cart' element={<CartScreen />} />
